@@ -9,19 +9,21 @@ Usage:
     Specifiy workspace path: export LUNCHBOX_WS=/workspace/<username>
 EOF
 }
-DIRNAME=$(basename `pwd`)
+
 push() {
-    if [ "$#" -gt 1 ]; then
-        DIRNAME=$(basename `pwd`)
+    DIRNAME=$(basename `pwd`)
+    if [ "$#" -gt 0 ]; then
+        DIRNAME="$1"
     fi
     rsync -rlptz --progress --delete --exclude=.git . "lunchbox:$LUNCHBOX_WS/$DIRNAME"
 }
 
 pull() {
-    if [ "$#" -eq 0 ]; then
-        usage
-        exit 1
+    DIRNAME=$(basename `pwd`)
+    if [ "$#" -gt 0 ]; then
+        DIRNAME="$1"
     fi
+    rsync -rlptzh --progress --delete --exclude=.git "lunchbox:$LUNCHBOX_WS/$DIRNAME/" .
 }
 
 if [ "$#" -eq 0 ]; then
