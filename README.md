@@ -1,4 +1,6 @@
 # htyutils
+> Utilities for ErhaGoose
+
 ## lunchbox
 ```
 Usage:
