@@ -5,4 +5,4 @@ echo 'Please add lunchbox in ~/.ssh/config as follows:'
 echo 'Host lunchbox
   HostName <HostName>
   User <UserName>'
-ln -s "$(pwd)/lunchbox" /usr/local/bin/lunchbox
+./links.sh
